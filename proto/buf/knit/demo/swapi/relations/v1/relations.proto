@@ -1,0 +1,221 @@
+// Copyright 2023 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package buf.knit.demo.swapi.relations.v1;
+
+import "buf/knit/demo/swapi/film/v1/film.proto";
+import "buf/knit/demo/swapi/person/v1/person.proto";
+import "buf/knit/demo/swapi/planet/v1/planet.proto";
+import "buf/knit/demo/swapi/species/v1/species.proto";
+import "buf/knit/demo/swapi/starship/v1/starship.proto";
+import "buf/knit/demo/swapi/vehicle/v1/vehicle.proto";
+import "buf/knit/v1alpha1/options.proto";
+
+service FilmResolverService {
+  rpc GetPersonFilms(GetPersonRelationsRequest) returns (GetFilmsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "films";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetSpeciesFilms(GetSpeciesRelationsRequest) returns (GetFilmsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "films";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPlanetFilms(GetPlanetRelationsRequest) returns (GetFilmsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "films";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetStarshipFilms(GetStarshipRelationsRequest) returns (GetFilmsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "films";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetVehicleFilms(GetVehicleRelationsRequest) returns (GetFilmsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "films";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+service PersonResolverService {
+  rpc GetFilmCharacters(GetFilmRelationsRequest) returns (GetCharactersResponse) {
+    option (buf.knit.v1alpha1.relation).name = "characters";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetSpeciesCharacters(GetSpeciesRelationsRequest) returns (GetCharactersResponse) {
+    option (buf.knit.v1alpha1.relation).name = "characters";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPlanetResidents(GetPlanetRelationsRequest) returns (GetResidentsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "residents";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetStarshipPilots(GetStarshipRelationsRequest) returns (GetPilotsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "pilots";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetVehiclePilots(GetVehicleRelationsRequest) returns (GetPilotsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "pilots";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+service PlanetResolverService {
+  rpc GetFilmPlanets(GetFilmRelationsRequest) returns (GetPlanetsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "planets";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPersonHomeworld(GetPersonRelationRequest) returns (GetHomeworldResponse) {
+    option (buf.knit.v1alpha1.relation).name = "homeworld";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetSpeciesHomeworld(GetSpeciesRelationRequest) returns (GetHomeworldResponse) {
+    option (buf.knit.v1alpha1.relation).name = "homeworld";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+service SpeciesResolverService {
+  rpc GetFilmSpecies(GetFilmRelationsRequest) returns (GetSpeciesResponse) {
+    option (buf.knit.v1alpha1.relation).name = "species";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPersonSpecies(GetPersonRelationsRequest) returns (GetSpeciesResponse) {
+    option (buf.knit.v1alpha1.relation).name = "species";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+
+}
+
+service StarshipResolverService {
+  rpc GetFilmStarships(GetFilmRelationsRequest) returns (GetStarshipsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "starships";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPersonStarships(GetPersonRelationsRequest) returns (GetStarshipsResponse) {
+    option (buf.knit.v1alpha1.relation).name = "starships";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+service VehicleResolverService {
+  rpc GetFilmVehicles(GetFilmRelationsRequest) returns (GetVehiclesResponse) {
+    option (buf.knit.v1alpha1.relation).name = "vehicles";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc GetPersonVehicles(GetPersonRelationsRequest) returns (GetVehiclesResponse) {
+    option (buf.knit.v1alpha1.relation).name = "vehicles";
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+message GetFilmRelationsRequest {
+  repeated film.v1.Film bases = 1;
+  int32 limit = 2;
+}
+
+message GetPersonRelationsRequest {
+  repeated person.v1.Person bases = 1;
+  int32 limit = 2;
+}
+
+message GetPersonRelationRequest {
+  repeated person.v1.Person bases = 1;
+}
+
+message GetSpeciesRelationsRequest {
+  repeated species.v1.Species bases = 1;
+  int32 limit = 2;
+}
+
+message GetSpeciesRelationRequest {
+  repeated species.v1.Species bases = 1;
+}
+
+message GetPlanetRelationsRequest {
+  repeated planet.v1.Planet bases = 1;
+  int32 limit = 2;
+}
+
+message GetStarshipRelationsRequest {
+  repeated starship.v1.Starship bases = 1;
+  int32 limit = 2;
+}
+
+message GetVehicleRelationsRequest {
+  repeated vehicle.v1.Vehicle bases = 1;
+  int32 limit = 2;
+}
+
+message GetFilmsResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated film.v1.Film films = 1;
+  }
+}
+
+message GetCharactersResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated person.v1.Person characters = 1;
+  }
+}
+
+message GetResidentsResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated person.v1.Person residents = 1;
+  }
+}
+
+message GetPilotsResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated person.v1.Person pilots = 1;
+  }
+}
+
+message GetPlanetsResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated planet.v1.Planet planets = 1;
+  }
+}
+
+message GetHomeworldResponse {
+  repeated Result values = 1;
+  message Result {
+    planet.v1.Planet homeworld = 1;
+  }
+}
+
+message GetSpeciesResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated species.v1.Species species = 1;
+  }
+}
+
+message GetStarshipsResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated starship.v1.Starship starships = 1;
+  }
+}
+
+message GetVehiclesResponse {
+  repeated Result values = 1;
+  message Result {
+    repeated vehicle.v1.Vehicle vehicles = 1;
+  }
+}

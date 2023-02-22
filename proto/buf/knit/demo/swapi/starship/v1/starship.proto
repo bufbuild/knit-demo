@@ -1,0 +1,67 @@
+// Copyright 2023 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package buf.knit.demo.swapi.starship.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Starship {
+  string id = 1;
+  string name = 2;
+  int64 mglt = 3;
+  double cargo_capacity = 4;
+  string consumable = 5;
+  optional int64 cost_in_credits = 6;
+  int64 crew = 7;
+  double hyper_drive_rating = 8;
+  double length = 9;
+  repeated string manufacturers = 10;
+  string model = 11;
+  optional int64 max_atmosphering_speed = 12;
+  int64 passengers = 13;
+  string class = 14;
+  repeated string pilot_ids = 15;
+  repeated string film_ids = 16;
+  google.protobuf.Timestamp created = 17;
+  google.protobuf.Timestamp edited = 18;
+}
+
+service StarshipService {
+  rpc GetStarships(GetStarshipsRequest) returns (GetStarshipsResponse){
+     option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc ListStarships(ListStarshipsRequest) returns (ListStarshipsResponse){
+     option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+message GetStarshipsRequest {
+  repeated string ids = 1;
+}
+
+message GetStarshipsResponse {
+  repeated Starship starships = 1;
+}
+
+message ListStarshipsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListStarshipsResponse {
+  repeated Starship starships = 1;
+  string next_page_token = 2;
+}

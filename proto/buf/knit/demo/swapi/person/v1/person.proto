@@ -1,0 +1,64 @@
+// Copyright 2023 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package buf.knit.demo.swapi.person.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Person {
+  string id = 1;
+  string name = 2;
+  string mass = 3;
+  string hair_color = 4;
+  string skin_color = 5;
+  string eye_color = 6;
+  string birth_year = 7;
+  string gender = 8;
+  string homeworld_id = 9;
+  repeated string species_ids = 10;
+  repeated string film_ids = 11;
+  repeated string starship_ids = 12;
+  repeated string vehicle_ids = 13;
+  google.protobuf.Timestamp created = 14;
+  google.protobuf.Timestamp edited = 15;
+}
+
+service PersonService {
+  rpc GetPeople(GetPeopleRequest) returns (GetPeopleResponse){
+     option idempotency_level = NO_SIDE_EFFECTS;
+  }
+  rpc ListPeople(ListPeopleRequest) returns (ListPeopleResponse){
+     option idempotency_level = NO_SIDE_EFFECTS;
+  }
+}
+
+message GetPeopleRequest {
+  repeated string ids = 1;
+}
+
+message GetPeopleResponse {
+  repeated Person people = 1;
+}
+
+message ListPeopleRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListPeopleResponse {
+  repeated Person people = 1;
+  string next_page_token = 2;
+}

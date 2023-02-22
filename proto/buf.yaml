@@ -1,0 +1,5 @@
+version: v1
+name: buf.build/bufbuild/knit-demo
+deps:
+  - buf.build/bufbuild/knit:v0.0.1
+  - buf.build/googleapis/googleapis

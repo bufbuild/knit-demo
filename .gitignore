@@ -1,0 +1,8 @@
+/.dist/
+/.env/
+/.tmp/
+/ts/**/node_modules
+BUF_USER
+BUF_TOKEN
+GITHUB_USER
+GITHUB_TOKEN

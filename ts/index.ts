@@ -13,16 +13,16 @@
 // limitations under the License.
 
 import { createClient, Query } from "@bufbuild/knit";
-import type { FilmService } from "./gen/buf/knit/demo/swapi/film/v1/film_knit.js";
-import type { PersonService } from "./gen/buf/knit/demo/swapi/person/v1/person_knit.js";
-import type { PlanetService } from "./gen/buf/knit/demo/swapi/planet/v1/planet_knit.js";
-import type { SpeciesService } from "./gen/buf/knit/demo/swapi/species/v1/species_knit.js";
-import type { StarshipService } from "./gen/buf/knit/demo/swapi/starship/v1/starship_knit.js";
+import type { FilmService } from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/film/v1/film_knit.js";
+import type { PersonService } from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/person/v1/person_knit.js";
+import type { PlanetService } from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/planet/v1/planet_knit.js";
+import type { SpeciesService } from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/species/v1/species_knit.js";
+import type { StarshipService } from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/starship/v1/starship_knit.js";
 import type {
   VehicleService,
   Vehicle,
-} from "./gen/buf/knit/demo/swapi/vehicle/v1/vehicle_knit.js";
-import "./gen/buf/knit/demo/swapi/relations/v1/relations_knit.js";
+} from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/vehicle/v1/vehicle_knit.js";
+import type {} from "@buf/bufbuild_knit-demo.bufbuild_knit-ts/buf/knit/demo/swapi/relations/v1/relations_knit.js";
 
 type Schema = FilmService &
   PersonService &

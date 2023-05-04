@@ -1,5 +1,7 @@
 knit-demo
 =========
+[![Build](https://github.com/bufbuild/knit-demo/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/bufbuild/knit-demo/actions/workflows/ci.yaml)
+[![Report Card](https://goreportcard.com/badge/github.com/bufbuild/knit-demo)](https://goreportcard.com/report/github.com/bufbuild/knit-demo)
 
 `knit-demo` is an example RPC service and gateway configuration built with
 [Knit](https://github.com/bufbuild/knit).

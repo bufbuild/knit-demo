@@ -1,3 +1,7 @@
+buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go v1.7.0-20230504180255-7aead7ca16ee.1 h1:DaOwMRA8YRhfYR/m69SbgbYBFWdx4/fxS/HXRJ0xaf8=
+buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go v1.7.0-20230504180255-7aead7ca16ee.1/go.mod h1:VZi7ozCYUB24nS222VKseCOORzsRXFeDWfAPNq+34KQ=
+buf.build/gen/go/bufbuild/knit-demo/protocolbuffers/go v1.30.0-20230504180255-7aead7ca16ee.1 h1:MCN+KKyPzVvtgJrzQxEJj3loa3b5WKGhzYoPb8T/Mzw=
+buf.build/gen/go/bufbuild/knit-demo/protocolbuffers/go v1.30.0-20230504180255-7aead7ca16ee.1/go.mod h1:D3MvPYDo/VwrGr0PHbWIha2MBAcoFeCCY2ZBcYsTepo=
 buf.build/gen/go/bufbuild/knit/bufbuild/connect-go v1.7.0-20230504140941-3dc602456973.1 h1:UO5VZtfLW03qs8stGP9jDstQQzzAJdbZmlVtIOah280=
 buf.build/gen/go/bufbuild/knit/bufbuild/connect-go v1.7.0-20230504140941-3dc602456973.1/go.mod h1:zE4qs0wSqtp0QpzXngvrgGLFy6ZBpL8EE2jSmdOUD+w=
 buf.build/gen/go/bufbuild/knit/protocolbuffers/go v1.30.0-20230504140941-3dc602456973.1 h1:XBygYORdxM6ImtYu7NsJd94W2k5eYZAqUiOaly4jdyE=

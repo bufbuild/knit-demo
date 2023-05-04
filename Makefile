@@ -31,12 +31,11 @@ test: build ## Run unit tests
 	$(GO) test -vet=off -race -cover ./go/...
 
 .PHONY: build
-build: generate ## Build all packages
+build: ## Build all packages
 	$(GO) build ./...
 
-.PHONY: generate
-generate: $(BIN)/license-header $(BIN)/protoc-gen-knit-go ## Regenerate code and licenses
-	buf generate proto
+.PHONY: licenseheader
+licenseheader: $(BIN)/license-header
 	@# We want to operate on a list of modified and new files, excluding
 	@# deleted and ignored files. git-ls-files can't do this alone. comm -23 takes
 	@# two files and prints the union, dropping lines common to both (-3) and
@@ -69,11 +68,6 @@ upgrade: ## Upgrade dependencies
 	go get -u -t ./go/...
 	go mod tidy -v
 
-.PHONY: checkgenerate
-checkgenerate:
-	@# Used in CI to verify that `make generate` doesn't produce a diff.
-	test -z "$$(git status --porcelain | tee /dev/stderr)"
-
 .PHONY: release
 release:
 	go install github.com/goreleaser/goreleaser@v1.16.2
@@ -87,7 +81,3 @@ $(BIN)/license-header: Makefile
 $(BIN)/golangci-lint: Makefile
 	@mkdir -p $(@D)
 	GOBIN=$(abspath $(@D)) $(GO) install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.52.0
-
-$(BIN)/protoc-gen-knit-go: Makefile
-	@mkdir -p $(@D)
-	GOBIN=$(abspath $(@D)) $(GO) install github.com/bufbuild/knit-go/cmd/protoc-gen-knit-go@v0.1.1

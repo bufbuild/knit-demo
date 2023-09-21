@@ -26,14 +26,15 @@ import (
 	"sort"
 	"strings"
 
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/film/v1/filmv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/person/v1/personv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/planet/v1/planetv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/relations/v1/relationsv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/species/v1/speciesv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/starship/v1/starshipv1connect"
-	"buf.build/gen/go/bufbuild/knit-demo/bufbuild/connect-go/buf/knit/demo/swapi/vehicle/v1/vehiclev1connect"
-	grpcreflect "github.com/bufbuild/connect-grpcreflect-go"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/film/v1/filmv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/person/v1/personv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/planet/v1/planetv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/relations/v1/relationsv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/species/v1/speciesv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/starship/v1/starshipv1connect"
+	"buf.build/gen/go/bufbuild/knit-demo/connectrpc/go/buf/knit/demo/swapi/vehicle/v1/vehiclev1connect"
+	"buf.build/gen/go/bufbuild/knit/connectrpc/go/buf/knit/gateway/v1alpha1/gatewayv1alpha1connect"
+	"connectrpc.com/grpcreflect"
 	"github.com/bufbuild/knit-demo/go/internal"
 	"github.com/bufbuild/knit-demo/go/internal/swapi"
 	"github.com/bufbuild/knit-go"
@@ -141,8 +142,7 @@ func main() {
 	}
 
 	// support gRPC reflection
-	reflector := grpcreflect.NewStaticReflector(serviceNames...)
-	// TODO: also include the Knit service once it is public
+	reflector := grpcreflect.NewStaticReflector(append(serviceNames, gatewayv1alpha1connect.KnitServiceName)...)
 	mux.Handle(grpcreflect.NewHandlerV1(reflector))
 	mux.Handle(grpcreflect.NewHandlerV1Alpha(reflector))
 

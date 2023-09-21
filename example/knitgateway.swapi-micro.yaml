@@ -1,0 +1,42 @@
+listen:
+  port: 30480
+
+backends:
+- route_to: http://127.0.0.1:30481
+  services:
+    - buf.knit.demo.swapi.film.v1.FilmService
+    - buf.knit.demo.swapi.relations.v1.FilmResolverService
+  descriptors:
+    grpc_reflection: true
+  h2c: true
+
+- route_to: http://127.0.0.1:30482
+  services:
+    - buf.knit.demo.swapi.person.v1.PersonService
+    - buf.knit.demo.swapi.species.v1.SpeciesService
+    - buf.knit.demo.swapi.relations.v1.PersonResolverService
+    - buf.knit.demo.swapi.relations.v1.SpeciesResolverService
+  descriptors:
+    buf_module: buf.build/bufbuild/knit-demo
+
+- route_to: http://127.0.0.1:30483
+  services:
+    - buf.knit.demo.swapi.planet.v1.PlanetService
+    - buf.knit.demo.swapi.relations.v1.PlanetResolverService
+  descriptors:
+    # generated with:
+    #   buf build buf.build/bufbuild/knit-demo \
+    #       --type buf.knit.demo.swapi.planet.v1.PlanetService \
+    #       --type buf.knit.demo.swapi.relations.v1.PlanetResolverService \
+    #       -o planetsvc.protoset
+    descriptor_set_file: ./planetsvc.protoset
+
+- route_to: http://127.0.0.1:30484
+  services:
+    - buf.knit.demo.swapi.starship.v1.StarshipService
+    - buf.knit.demo.swapi.vehicle.v1.VehicleService
+    - buf.knit.demo.swapi.relations.v1.StarshipResolverService
+    - buf.knit.demo.swapi.relations.v1.VehicleResolverService
+  descriptors:
+    grpc_reflection: true
+  h2c: true

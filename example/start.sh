@@ -7,7 +7,7 @@ cd "$(dirname $0)"
 export GOBIN=$(dirname $PWD)/.tmp/bin
 mkdir -p $GOBIN
 go install ../go/cmd/swapi-server
-go install github.com/bufbuild/knit-go/cmd/knitgateway@v0.1.0
+go install github.com/bufbuild/knit-go/cmd/knitgateway@${KNIT_GO_VERSION:=v0.1.0}
 
 buf build buf.build/bufbuild/knit-demo \
     --type buf.knit.demo.swapi.planet.v1.PlanetService \

@@ -7,6 +7,7 @@ MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 MAKEFLAGS += --no-print-directory
 BIN := .tmp/bin
+export KNIT_GO_VERSION := v0.1.0
 COPYRIGHT_YEARS := 2023
 LICENSE_IGNORE := -e testdata/
 # Set to use a different compiler. For example, `GO=go1.18rc1 make test`.

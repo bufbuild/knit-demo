@@ -7,9 +7,9 @@ cd "$(dirname $0)"
 export GOBIN=$PWD/.tmp/bin
 mkdir -p $GOBIN
 go install ./go/cmd/swapi-server
-go install github.com/bufbuild/knit-go/cmd/knitgateway@v0.1.0
+go install github.com/bufbuild/knit-go/cmd/knitgateway@${KNIT_GO_VERSION:=v0.1.0}
 
-curl -o ./.tmp/knitgateway.yaml https://raw.githubusercontent.com/bufbuild/knit-go/main/knitgateway.example.yaml
+curl -o ./.tmp/knitgateway.yaml https://raw.githubusercontent.com/bufbuild/knit-go/${KNIT_GO_VERSION}/knitgateway.example.yaml
 
 function cleanup() {
   for pid in $pids; do

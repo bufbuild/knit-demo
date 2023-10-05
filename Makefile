@@ -29,6 +29,7 @@ clean: ## Delete intermediate build artifacts
 .PHONY: test
 test: build ## Run unit tests
 	$(GO) test -vet=off -race -cover ./go/...
+	./integration-test.sh
 
 .PHONY: build
 build: ## Build all packages

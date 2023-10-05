@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
   workflow_dispatch:
 env:
   PRIVATE_REGISTRY_HOST: us-central1-docker.pkg.dev
@@ -11,7 +16,21 @@ permissions:
   contents: read
   id-token: write
 jobs:
+  testlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup-go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.21.x
+      - name: make-test
+        run: make test && make checkgenerate
+      - name: make-lint
+        run: make lint
   docker-build-push-knit-demo:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: checkout

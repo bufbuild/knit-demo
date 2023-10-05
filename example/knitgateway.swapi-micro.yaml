@@ -24,12 +24,7 @@ backends:
     - buf.knit.demo.swapi.planet.v1.PlanetService
     - buf.knit.demo.swapi.relations.v1.PlanetResolverService
   descriptors:
-    # generated with:
-    #   buf build buf.build/bufbuild/knit-demo \
-    #       --type buf.knit.demo.swapi.planet.v1.PlanetService \
-    #       --type buf.knit.demo.swapi.relations.v1.PlanetResolverService \
-    #       -o planetsvc.protoset
-    descriptor_set_file: ./planetsvc.protoset
+    descriptor_set_file: ../.tmp/planetsvc.protoset
 
 - route_to: http://127.0.0.1:30484
   services:

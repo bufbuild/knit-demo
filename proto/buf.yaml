@@ -3,3 +3,15 @@ name: buf.build/bufbuild/knit-demo
 deps:
   - buf.build/bufbuild/knit:v0.0.1
   - buf.build/googleapis/googleapis
+lint:
+  use:
+    - DEFAULT
+  except:
+    # Relations re-use request and response message names
+    # for conciseness.
+    - RPC_REQUEST_RESPONSE_UNIQUE
+    - RPC_REQUEST_STANDARD_NAME
+    - RPC_RESPONSE_STANDARD_NAME
+breaking:
+  use:
+    - FILE

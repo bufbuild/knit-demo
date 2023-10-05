@@ -38,11 +38,11 @@ message Vehicle {
 }
 
 service VehicleService {
-  rpc GetVehicles(GetVehiclesRequest) returns (GetVehiclesResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc GetVehicles(GetVehiclesRequest) returns (GetVehiclesResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
-  rpc ListVehicles(ListVehiclesRequest) returns (ListVehiclesResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc ListVehicles(ListVehiclesRequest) returns (ListVehiclesResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
 

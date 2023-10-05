@@ -40,11 +40,11 @@ message Starship {
 }
 
 service StarshipService {
-  rpc GetStarships(GetStarshipsRequest) returns (GetStarshipsResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc GetStarships(GetStarshipsRequest) returns (GetStarshipsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
-  rpc ListStarships(ListStarshipsRequest) returns (ListStarshipsResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc ListStarships(ListStarshipsRequest) returns (ListStarshipsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
 

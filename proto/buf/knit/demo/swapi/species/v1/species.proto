@@ -38,11 +38,11 @@ message Species {
 
 // SpeciesService is the service to manage Species.
 service SpeciesService {
-  rpc GetSpecies(GetSpeciesRequest) returns (GetSpeciesResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc GetSpecies(GetSpeciesRequest) returns (GetSpeciesResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
-  rpc ListSpecies(ListSpeciesRequest) returns (ListSpeciesResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc ListSpecies(ListSpeciesRequest) returns (ListSpeciesResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
 

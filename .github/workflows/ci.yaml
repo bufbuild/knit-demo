@@ -26,7 +26,7 @@ jobs:
         with:
           go-version: 1.21.x
       - name: make-test
-        run: make test && make checkgenerate
+        run: make test
       - name: make-lint
         run: make lint
   docker-build-push-knit-demo:

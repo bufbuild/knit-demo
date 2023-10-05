@@ -94,7 +94,6 @@ service SpeciesResolverService {
     option (buf.knit.v1alpha1.relation).name = "species";
     option idempotency_level = NO_SIDE_EFFECTS;
   }
-
 }
 
 service StarshipResolverService {

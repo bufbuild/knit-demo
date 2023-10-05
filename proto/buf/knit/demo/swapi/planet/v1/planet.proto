@@ -37,11 +37,11 @@ message Planet {
 
 // PlanetService is the service to manage Planets.
 service PlanetService {
-  rpc GetPlanets(GetPlanetsRequest) returns (GetPlanetsResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc GetPlanets(GetPlanetsRequest) returns (GetPlanetsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
-  rpc ListPlanets(ListPlanetsRequest) returns (ListPlanetsResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc ListPlanets(ListPlanetsRequest) returns (ListPlanetsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
 

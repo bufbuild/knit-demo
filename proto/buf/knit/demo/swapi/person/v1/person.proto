@@ -37,11 +37,11 @@ message Person {
 }
 
 service PersonService {
-  rpc GetPeople(GetPeopleRequest) returns (GetPeopleResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc GetPeople(GetPeopleRequest) returns (GetPeopleResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
-  rpc ListPeople(ListPeopleRequest) returns (ListPeopleResponse){
-     option idempotency_level = NO_SIDE_EFFECTS;
+  rpc ListPeople(ListPeopleRequest) returns (ListPeopleResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
 

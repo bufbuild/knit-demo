@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'proto/**'
+      - '.github/workflows/buf.yaml'
   workflow_dispatch:
 permissions:
   contents: read

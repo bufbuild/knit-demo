@@ -1,6 +1,6 @@
 module github.com/bufbuild/knit-demo
 
-go 1.22.0
+go 1.21.0
 
 require (
 	buf.build/gen/go/bufbuild/knit-demo/connectrpc/go v1.15.0-20231005145018-a92ee6b04e01.1

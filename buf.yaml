@@ -1,5 +1,7 @@
-version: v1
-name: buf.build/bufbuild/knit-demo
+version: v2
+modules:
+  - path: proto
+    name: buf.build/bufbuild/knit-demo
 deps:
   - buf.build/bufbuild/knit:v0.0.1
   - buf.build/googleapis/googleapis
@@ -12,6 +14,7 @@ lint:
     - RPC_REQUEST_RESPONSE_UNIQUE
     - RPC_REQUEST_STANDARD_NAME
     - RPC_RESPONSE_STANDARD_NAME
+  disallow_comment_ignores: true
 breaking:
   use:
     - FILE

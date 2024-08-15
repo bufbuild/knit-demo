@@ -122,7 +122,7 @@ func printItems[T any](varName string, items []*T) {
 		fmt.Println("\t\t{")
 		v := reflect.ValueOf(item).Elem()
 		vt := v.Type()
-		for i := 0; i < v.NumField(); i++ {
+		for i := range v.NumField() {
 			fmt.Printf("\t\t\t%s: ", vt.Field(i).Name)
 			printItem(v.Field(i).Interface())
 			fmt.Println(",")

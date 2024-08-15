@@ -16,10 +16,10 @@ package internal
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net"
 	"net/http"
+	"strconv"
 	"strings"
 	"sync/atomic"
 	"time"
@@ -102,7 +102,7 @@ func (i *interceptWriter) Write(bytes []byte) (int, error) {
 
 func (i *interceptWriter) WriteHeader(statusCode int) {
 	if !i.alreadyWrote {
-		i.status = fmt.Sprintf("%d", statusCode)
+		i.status = strconv.Itoa(statusCode)
 	}
 	i.w.WriteHeader(statusCode)
 }
